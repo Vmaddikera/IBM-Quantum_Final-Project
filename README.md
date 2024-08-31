@@ -27,9 +27,6 @@ Part 3: Analyzing the Shor Code
 2. Qiskit
 3. Matplotlib
 
-To install the required libraries, run:
-
-`pip install qiskit matplotlib`
 
 ## Implementation Steps
 
@@ -40,6 +37,42 @@ The Phase-Flip code is the first part of the Shor code. The logical qubit is enc
 1. Encoding Circuit: The logical qubit is entangled with two ancillary qubits using CNOT gates and placed in a superposition using Hadamard gates.
 2. Correction Circuit: The correction circuit detects and corrects any phase-flip errors by checking the phases of the qubits and applying a Toffoli gate if necessary.
 
-### Flow Diagram :
+1.2 Implementing the Bit-Flip Code
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.]()
+The Bit-Flip code forms the second part of the Shor code. Each qubit from the Phase-Flip code is encoded into a 3-qubit Bit-Flip code.
+1. Encoding Circuit: The logical qubit is entangled with two ancillary qubits using CNOT gates.
+2. Correction Circuit: The correction circuit detects and corrects any bit-flip errors by checking the parity of the qubits and applying a Toffoli gate if necessary.
+
+
+### Part 2: Implementing the Shor Code
+The Shor code combines the Phase-Flip and Bit-Flip codes to protect against both types of errors.
+
+1. Encoding:
+   Each logical qubit is first encoded using the Phase-Flip code.
+   Each resulting qubit from the Phase-Flip code is further encoded using the Bit-Flip code.
+2. Correction:
+   The encoded state is checked and corrected for Bit-Flip errors.
+   The encoded state is then checked and corrected for Phase-Flip errors.
+
+
+### Part 3: Analyzing the Shor Code
+1. Fidelity Calculation: The state fidelity, which measures the similarity between the initial and final states, is used to evaluate the effectiveness of the Shor 
+   code.
+2. Error Simulation: Errors are introduced at different probabilities to analyze how the Shor code performs under varying conditions.
+
+### Comparison:
+1. Without Error Correction: Fidelity decreases significantly with increasing error probability.
+2. With Shor Code: Fidelity remains high up to a certain error probability, demonstrating the effectiveness of the Shor code.
+
+
+## Clone the Repository:
+`git clone <repository-url>
+cd <repository-directory>`
+
+## Install Dependencies:
+`pip install qiskit matplotlib`
+
+## Run the Main Script:
+`python shor_code.py`
+
+
